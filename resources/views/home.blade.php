@@ -36,24 +36,11 @@
             </select>
         </div>
         <div class="task_list">
-            @php
-                $tasks = [
-                    [
-                        'id' => 1, 
-                        'done' => true, 
-                        'title' => 'Minha Primeira Task', 
-                        'category' => 'Categoria 1'
-                    ],
-                    [
-                        'id' => 2, 
-                        'done' => false, 
-                        'title' => 'Minha Segunda Task', 
-                        'category' => 'Categoria 2'
-                    ],
-                ]
-            @endphp
-            <x-task :data=$tasks[0]/>
-            <x-task :data=$tasks[1]/>
+
+            @foreach ($tasks as $task)
+                <x-task :data=$task/>
+            @endforeach
+            
         </div>
     </section>
 </x-layout>
