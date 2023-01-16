@@ -43,11 +43,26 @@ class TaskController extends Controller
     }
 
     public function edit_action(Request $request){
-        return 'OK';
+        $request_data = $request->only(['title', 'due_date', 'category_id', 'description']);
+
+        $task = Task::find($request->id);
+        if (!$task){
+            return 'Erro de task não existente';
+        }
+        $task->update($request_data);
+        $task->save();
+        return redirect(route('home'));
     }
 
     public function delete(Request $request){
-        // Delete e redireciona de volta para a home
+        $id = $request->id;
+
+        $task = Task::find($id);
+
+        if ($task){
+            $task->delete();
+        }
+        
         return redirect(route('home'));
     }
 }
