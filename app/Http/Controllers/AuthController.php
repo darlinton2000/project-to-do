@@ -28,4 +28,13 @@ class AuthController extends Controller
 
         return redirect(route('login'));
     }
+
+    public function login_action(Request $request){
+        $validator = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required|min:6'
+        ]);
+
+        dd($validator);
+    }
 }

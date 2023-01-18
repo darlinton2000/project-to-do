@@ -8,19 +8,14 @@
 
     <section id="task_section">
         <h1> Registrar-se </h1>
-        <form method="POST" action="{{ Route('user.register_action') }}">
-            @if ($errors->any())
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            @endif
-            {{-- flashmsg para erro na tela de login --}}
-            @if (session()->has('loginError'))
-                <div>
-                    <li>{{ session()->get('loginError') }}</li>
-                </div>
-            @endif
 
+        @if ($errors->any())
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        @endif
+
+        <form method="POST" action="{{ Route('user.register_action') }}">
             @csrf
 
             <x-form.text_input name="name" label="Seu nome" placeholder="Seu nome" required="required" />
@@ -32,7 +27,6 @@
                 placeholder="Confirme sua Senha" required="required" />
 
             <x-form.form_button resetTxt="Limpar" submitTxt="Registrar-se" />
-
         </form>
     </section>
 </x-layout>
