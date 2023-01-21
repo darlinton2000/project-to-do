@@ -19,7 +19,7 @@ class HomeController extends Controller
         
         $carbonDate = Carbon::createFromDate($filteredDate);
 
-        $data['data_as_string'] = $carbonDate->format('d \d\e M');
+        $data['data_as_string'] = $carbonDate->translatedFormat('d') . ' de ' . ucfirst($carbonDate->translatedFormat('M'));
         $data['data_prev_button'] = $carbonDate->addDay(-1)->format('Y-m-d');
         $data['data_next_button'] = $carbonDate->addDay(2)->format('Y-m-d');
         $data['tasks'] = Task::whereDate('due_date', $filteredDate)->get();
