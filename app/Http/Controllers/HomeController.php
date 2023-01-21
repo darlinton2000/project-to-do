@@ -9,9 +9,13 @@ use Illuminate\Support\Facades\Auth;
 class HomeController extends Controller
 {
     public function index(Request $request){
-        $tasks = Task::all()->take(4);
-        $authUser = Auth::user();
 
-        return view('home', ['tasks' => $tasks, 'authUser' => $authUser]);
+        $data['tasks'] = Task::whereDate('due_date', date('Y-m-d'))->get();
+        $data['authUser'] = Auth::user();
+
+        $data['tasks_count'] = $data['tasks']->count();
+        $data['undone_tasks_count'] = $data['tasks']->where('is_done', false)->count();
+
+        return view('home', $data);
     }
 }
