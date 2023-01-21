@@ -14,9 +14,13 @@
             <h2> Progesso do Dia </h2>
             <div class="graph_header-line"></div>
             <div class="graph_header-date">
-                <img src="/assets/images/icon-prev.png">
-                    13 de Dez
-                <img src="/assets/images/icon-next.png">
+                <a href="{{route('home', ['date' => $data_prev_button])}}">
+                    <img src="/assets/images/icon-prev.png">
+                </a>
+                    {{$data_as_string}}
+                <a href="{{route('home', ['date' => $data_next_button])}}">
+                    <img src="/assets/images/icon-next.png">
+                </a>
             </div>
         </div>
 
