@@ -1,6 +1,6 @@
 <h2>Sistema de Gerenciador de Tarefas</h2>
 
-<p>Para a construção da aplicação, está sendo utlizado o Laravel 9.</p>
+<p>Para a construção da aplicação, está sendo utlizado o Laravel 9 e o PHP 8.1</p>
 <p>Projeto em desenvolvimento.</p>
 <hr/>
 
