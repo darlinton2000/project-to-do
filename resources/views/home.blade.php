@@ -32,7 +32,13 @@
 
         <div class="tasks_left_footer">
             <img src="/assets/images/icon-info.png" />
-            Restam 3 tarefas para serem realizadas
+            @if ($undone_tasks_count === 1)
+                Resta {{$undone_tasks_count}} tarefa para ser realizada
+            @elseif ($undone_tasks_count > 1)
+                Restam {{$undone_tasks_count}} tarefas para serem realizadas
+            @else
+                Não existem tarefas para serem realizadas
+            @endif
         </div>
     </section>
 
