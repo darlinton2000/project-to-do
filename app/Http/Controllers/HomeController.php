@@ -9,14 +9,14 @@ use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
-    public function index(Request $request){
-
-        if ($request->date){
+    public function index(Request $request)
+    {
+        if ($request->date) {
             $filteredDate = $request->date;
         } else {
             $filteredDate = date('Y-m-d');
         }
-        
+
         $carbonDate = Carbon::createFromDate($filteredDate);
 
         $data['data_as_string'] = $carbonDate->translatedFormat('d') . ' de ' . ucfirst($carbonDate->translatedFormat('M'));
@@ -26,6 +26,7 @@ class HomeController extends Controller
         $data['authUser'] = Auth::user();
         $data['tasks_count'] = $data['tasks']->count();
         $data['undone_tasks_count'] = $data['tasks']->where('is_done', false)->count();
+        $data['done_tasks_count'] = $data['tasks']->where('is_done', true)->count();
 
         return view('home', $data);
     }
